@@ -7,12 +7,13 @@ data "azurerm_subnet" "env_subnet" {
 
 resource "azurerm_container_app_environment" "container_env" {
   location                       = var.location
-  name                           = var.env_name
+  name                           = format("%s-%s",var.project,var.env_name)
   resource_group_name            = var.resource_group
   infrastructure_subnet_id       = data.azurerm_subnet.env_subnet.id
   internal_load_balancer_enabled = var.internal_load_balancer_enabled
   zone_redundancy_enabled        = var.zone_redundancy_enabled
-  logs_destination               = var.logs_destination
+  infrastructure_resource_group_name = local.infrastructure_resource_group_name
+#   logs_destination               = var.logs_destination
 
   dynamic "workload_profile" {
     for_each = var.workload_profiles
