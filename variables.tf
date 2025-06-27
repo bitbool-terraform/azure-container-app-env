@@ -1,6 +1,4 @@
 # General
-variable "project" {}
-variable "systemenv" {}
 variable "location" {}
 variable "resource_group" {}
 variable "vnet" {}

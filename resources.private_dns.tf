@@ -9,7 +9,7 @@ data "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "main" {
-  name                  = format("%s-%s-link",var.project,var.env_name)
+  name                  = format("%s-link",var.env_name)
   resource_group_name   = var.resource_group
   private_dns_zone_name = azurerm_private_dns_zone.main.name
   virtual_network_id    = data.azurerm_virtual_network.vnet.id

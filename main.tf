@@ -7,7 +7,7 @@ data "azurerm_subnet" "env_subnet" {
 
 resource "azurerm_container_app_environment" "container_env" {
   location                       = var.location
-  name                           = format("%s-%s",var.project,var.env_name)
+  name                           = var.env_name
   resource_group_name            = var.resource_group
   infrastructure_subnet_id       = data.azurerm_subnet.env_subnet.id
   internal_load_balancer_enabled = var.internal_load_balancer_enabled
