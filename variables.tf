@@ -3,6 +3,7 @@ variable "location" {}
 variable "resource_group" {}
 variable "vnet" {}
 variable "infrastructure_resource_group_name" { default = null}
+variable "tags" { default = {} }
 
 # Container app Env app object
 variable "env_name" {}

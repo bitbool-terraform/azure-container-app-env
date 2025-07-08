@@ -13,6 +13,7 @@ resource "azurerm_container_app_environment" "container_env" {
   internal_load_balancer_enabled = var.internal_load_balancer_enabled
   zone_redundancy_enabled        = var.zone_redundancy_enabled
   infrastructure_resource_group_name = local.infrastructure_resource_group_name
+  tags                           = var.tags
 #   logs_destination               = var.logs_destination
 
   dynamic "workload_profile" {
