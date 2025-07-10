@@ -1,6 +1,7 @@
 resource "azurerm_private_dns_zone" "main" {
   name                = resource.azurerm_container_app_environment.container_env.default_domain
   resource_group_name = var.resource_group
+  tags                = var.tags_dns
 }
 
 data "azurerm_virtual_network" "vnet" {
@@ -13,6 +14,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "main" {
   resource_group_name   = var.resource_group
   private_dns_zone_name = azurerm_private_dns_zone.main.name
   virtual_network_id    = data.azurerm_virtual_network.vnet.id
+    tags                = var.tags_dns
 }
 
 resource "azurerm_private_dns_a_record" "main" {
