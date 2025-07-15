@@ -14,7 +14,13 @@ resource "azurerm_container_app_environment" "container_env" {
   zone_redundancy_enabled        = var.zone_redundancy_enabled
   infrastructure_resource_group_name = local.infrastructure_resource_group_name
   tags                           = var.tags
-#   logs_destination               = var.logs_destination
+
+
+  lifecycle {
+    ignore_changes = [
+      log_analytics_workspace_id
+    ]
+  }
 
   dynamic "workload_profile" {
     for_each = var.workload_profiles
