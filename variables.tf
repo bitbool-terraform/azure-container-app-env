@@ -16,3 +16,4 @@ variable "internal_load_balancer_enabled" { default = true}
 variable "zone_redundancy_enabled" { default = false}
 variable "logs_destination" { default = "azure-monitor" }
 variable "tags_dns" { default = null }
+variable "log_analytics_workspace_id" { default = null }
