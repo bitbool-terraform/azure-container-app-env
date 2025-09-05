@@ -14,6 +14,7 @@ resource "azurerm_container_app_environment" "container_env" {
   zone_redundancy_enabled        = var.zone_redundancy_enabled
   infrastructure_resource_group_name = local.infrastructure_resource_group_name
   log_analytics_workspace_id     = var.log_analytics_workspace_id
+  logs_destination               = var.logs_destination
   tags                           = var.tags
 
 
@@ -33,4 +34,20 @@ resource "azurerm_container_app_environment" "container_env" {
         maximum_count         = lookup(workload_profile.value,"maximum_count",1)
     }
   }
+}
+
+
+
+
+resource "azurerm_monitor_diagnostic_setting" "container_app_environment_logs" {
+  count = var.enable_diagnostic_setting ? 1 : 0
+    
+  name                       = format("%s-diagnostic-setting",var.env_name)
+  target_resource_id         = azurerm_container_app_environment.container_env.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  enabled_log {
+    category = "ContainerAppConsoleLogs"
+  }
+# 
 }
