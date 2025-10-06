@@ -16,13 +16,14 @@ resource "azurerm_container_app_environment" "container_env" {
   log_analytics_workspace_id     = var.log_analytics_workspace_id
   logs_destination               = var.logs_destination
   tags                           = var.tags
+  logs_destination               = var.log_analytics_workspace_id == null ? null : "log-analytics" 
 
 
-  lifecycle {
-    ignore_changes = [
-      log_analytics_workspace_id
-    ]
-  }
+  # lifecycle {
+  #   ignore_changes = [
+  #     log_analytics_workspace_id
+  #   ]
+  # }
 
   dynamic "workload_profile" {
     for_each = var.workload_profiles
