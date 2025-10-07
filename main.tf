@@ -13,10 +13,10 @@ resource "azurerm_container_app_environment" "container_env" {
   internal_load_balancer_enabled = var.internal_load_balancer_enabled
   zone_redundancy_enabled        = var.zone_redundancy_enabled
   infrastructure_resource_group_name = local.infrastructure_resource_group_name
-  log_analytics_workspace_id     = var.log_analytics_workspace_id
-  logs_destination               = var.logs_destination
-  tags                           = var.tags
+  # logs_destination               = var.logs_destination
   logs_destination               = var.log_analytics_workspace_id == null ? null : "log-analytics" 
+  log_analytics_workspace_id     = var.log_analytics_workspace_id
+  tags                           = var.tags
 
 
   # lifecycle {
