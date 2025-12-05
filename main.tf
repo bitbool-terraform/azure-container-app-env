@@ -19,11 +19,11 @@ resource "azurerm_container_app_environment" "container_env" {
   tags                           = var.tags
 
 
-  # lifecycle {
-  #   ignore_changes = [
-  #     log_analytics_workspace_id
-  #   ]
-  # }
+  lifecycle {
+    ignore_changes = [
+      log_analytics_workspace_id
+    ]
+  }
 
   dynamic "workload_profile" {
     for_each = var.workload_profiles
