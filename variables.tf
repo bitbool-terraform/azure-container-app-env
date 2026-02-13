@@ -1,19 +1,18 @@
 # General
-variable "location" {}
-variable "resource_group" {}
-variable "vnet" {}
-variable "infrastructure_resource_group_name" { default = null}
-variable "tags" { default = {} }
+variable "container_app_env" {}
 
-# Container app Env app object
-variable "env_name" {}
-variable "env_subnet" {}
-variable "workload_profiles" {}
+# Defaults
+variable "internal_load_balancer_enabled_default" { default = true}
+variable "zone_redundancy_enabled_default" { default = false}
 
 
-# Config Defaults
-variable "internal_load_balancer_enabled" { default = true}
+
 variable "zone_redundancy_enabled" { default = false}
-variable "tags_dns" { default = null }
-variable "log_analytics_workspace_id" { default = null }
-variable "logs_destination" { default = null }
+
+variable "workload_profiles_default" { default = {    
+    Consumption = {
+      type = "Consumption"
+      minimum_count = 0
+      maximum_count = 0
+    }
+    }}
