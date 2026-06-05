@@ -17,3 +17,4 @@ variable "zone_redundancy_enabled" { default = false}
 variable "tags_dns" { default = null }
 variable "log_analytics_workspace_id" { default = null }
 variable "logs_destination" { default = null }
+variable "identity_ids" { default = [] }
