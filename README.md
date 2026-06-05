@@ -5,7 +5,7 @@
 
 | Version    | Changes |
 | -------- | ------- |
-| v2.1.1  | Added Identity IDs |
+| v2.1.2  | Added Identity IDs |
 | v2.0.0  | Major upgrade: most inputs moved to `container_app_env` object for better fallbacks, default values gathered to vars. Data removed from inside the module. Resources inputs must be provided as resource ids. |
 
 
