@@ -4,8 +4,6 @@ variable "container_app_env" {}
 # Defaults
 variable "internal_load_balancer_enabled_default" { default = true}
 variable "zone_redundancy_enabled_default" { default = false}
-variable "identity_ids" { default = [] }
-
 
 variable "zone_redundancy_enabled" { default = false}
 

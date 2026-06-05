@@ -17,10 +17,10 @@ resource "azurerm_container_app_environment" "container_env" {
   }
 
   dynamic "identity" {
-    for_each = var.identity_ids != [] ? [1] : []
+    for_each = lookup(var.container_app_env,"identity_ids",[]) != [] ? [1] : []
     content {
       type         = "UserAssigned"
-      identity_ids = var.identity_ids
+      identity_ids = var.container_app_env.identity_ids
     }
   }
 
