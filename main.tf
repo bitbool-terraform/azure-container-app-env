@@ -16,6 +16,13 @@ resource "azurerm_container_app_environment" "container_env" {
     ]
   }
 
+  dynamic "identity" {
+    for_each = var.identity_ids != [] ? [1] : []
+    content {
+      type         = "UserAssigned"
+      identity_ids = var.identity_ids
+    }
+    
   dynamic "workload_profile" {
     for_each = lookup(var.container_app_env,"workload_profiles",var.workload_profiles_default)
 
